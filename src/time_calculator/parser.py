@@ -39,3 +39,11 @@ def parse_duration(duration_string):
         "minutes": int(minutes),
     }
     return duration_dict
+
+
+def parse_day(date_string):
+    """Parse a date string."""
+    days = ["sunday", "monday", "tuesday", "wednesday", "thursday", "saturday"]
+    if date_string.lower() in days:
+        return date_string.lower()
+    return None

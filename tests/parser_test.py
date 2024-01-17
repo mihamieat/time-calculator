@@ -2,7 +2,7 @@
 """Test parser package."""
 
 import unittest
-from src.time_calculator.parser import parse_clock, parse_duration
+from src.time_calculator.parser import parse_clock, parse_duration, parse_day
 
 
 class TestClockParser(unittest.TestCase):
@@ -61,3 +61,19 @@ class TestDurationPrser(unittest.TestCase):
         duration = parse_duration("04:66")
         excepted = None
         self.assertEqual(duration, excepted)
+
+
+class TestDayParser(unittest.TestCase):
+    """Test days parser."""
+
+    def test_correct_day(self):
+        """Test correct day."""
+        day = parse_day("MoNdaY")
+        excepted = "monday"
+        self.assertEqual(day, excepted)
+
+    def test_false_day(self):
+        """Test false day."""
+        day = parse_day("moonday")
+        excepted = None
+        self.assertEqual(day, excepted)

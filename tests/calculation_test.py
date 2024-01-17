@@ -2,7 +2,7 @@
 """Test calculations modules."""
 
 import unittest
-from src.time_calculator.calculation import add_hours
+from src.time_calculator.calculation import add_hours, add_minutes
 
 
 class TestHoursCalculation(unittest.TestCase):
@@ -35,3 +35,19 @@ class TestHoursCalculation(unittest.TestCase):
         self.assertEqual(hours_sum, 1)
         self.assertEqual(days, 2)
         self.assertEqual(am_pm, "PM")
+
+
+class TestMinutesCalculation(unittest.TestCase):
+    """Test the minutes calculation."""
+
+    def test_correct_minutes_sum(self):
+        """Test correct minutes calculation."""
+        minutes_sum, extra_hours = add_minutes(12, 2)
+        self.assertEqual(minutes_sum, 14)
+        self.assertEqual(extra_hours, 0)
+
+    def test_correct_minutes_sum_extra_hour(self):
+        """Test correct minutes calculation."""
+        minutes_sum, extra_hours = add_minutes(59, 2)
+        self.assertEqual(minutes_sum, 1)
+        self.assertEqual(extra_hours, 1)

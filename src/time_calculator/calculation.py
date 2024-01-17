@@ -23,3 +23,12 @@ def add_hours(clock_hours, duration_hours, ap_pm, extra_hour=0):
         ap_pm_result = "PM"
 
     return hours_sum, days, ap_pm_result
+
+
+def add_minutes(clock_minutes, duration_minutes):
+    """Add minutes to a clock minutes."""
+    raw_minutes_sum = clock_minutes + duration_minutes
+    extra_hours = raw_minutes_sum // 60
+    minutes_sum = raw_minutes_sum % 60
+
+    return minutes_sum, extra_hours

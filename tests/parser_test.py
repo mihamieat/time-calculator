@@ -41,26 +41,26 @@ class TestClockParser(unittest.TestCase):
         self.assertEqual(clock, expected)
 
 
-class TestDurationPrser(unittest.TestCase):
+class TestDurationParser(unittest.TestCase):
     """Test duration parser."""
 
     def test_correct_duration(self):
         """Test correct duration."""
         duration = parse_duration("180:56")
-        excepted = {"hours": 180, "minutes": 56}
-        self.assertEqual(duration, excepted)
+        expected = {"hours": 180, "minutes": 56}
+        self.assertEqual(duration, expected)
 
     def test_correct_duration_zeros(self):
         """Test correct duration."""
         duration = parse_duration("04:06")
-        excepted = {"hours": 4, "minutes": 6}
-        self.assertEqual(duration, excepted)
+        expected = {"hours": 4, "minutes": 6}
+        self.assertEqual(duration, expected)
 
     def test_duration_minutes_out_of_bound(self):
         """Test out of bound minutes."""
         duration = parse_duration("04:66")
-        excepted = None
-        self.assertEqual(duration, excepted)
+        expected = None
+        self.assertEqual(duration, expected)
 
 
 class TestDayParser(unittest.TestCase):
@@ -69,11 +69,11 @@ class TestDayParser(unittest.TestCase):
     def test_correct_day(self):
         """Test correct day."""
         day = parse_day("MoNdaY")
-        excepted = "monday"
-        self.assertEqual(day, excepted)
+        expected = "monday"
+        self.assertEqual(day, expected)
 
     def test_false_day(self):
         """Test false day."""
         day = parse_day("moonday")
-        excepted = None
-        self.assertEqual(day, excepted)
+        expected = None
+        self.assertEqual(day, expected)

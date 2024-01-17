@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """version 0.1.0"""
 
-from src.time_calculator.calculation import add_hours, add_minutes
+from src.time_calculator.calculation import add_hours, add_minutes, add_days
 from src.time_calculator.parser import parse_clock, parse_duration
 from src.time_calculator.formatter import format_result
 
 
-def time_calculator(clock_time, duration_time):
+def time_calculator(clock_time, duration_time, day=None):
     """Main function of adding duration to a clock."""
     clock = parse_clock(clock_time)
     duration = parse_duration(duration_time)
@@ -19,4 +19,9 @@ def time_calculator(clock_time, duration_time):
         extra_hour=extra_hours,
     )
 
-    return format_result(hours, minutes, am_pm, extra_days)
+    if day:
+        day = add_days(day, extra_days)
+
+    return format_result(
+        hours, minutes, am_pm, extra_days=extra_days, dayofweek=day
+    )

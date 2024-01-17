@@ -31,3 +31,19 @@ def add_minutes(clock_minutes, duration_minutes):
     minutes_sum = raw_minutes_sum % 60
 
     return minutes_sum, extra_hours
+
+
+def add_days(dayofweek, extra_days):
+    """Add days to a day of the week."""
+    days = [
+        "sunday",
+        "monday",
+        "tuesday",
+        "wednesday",
+        "thursday",
+        "friday",
+        "saturday",
+    ]
+    index = days.index(dayofweek.lower())
+    day_output = days[(index + extra_days) % len(days)].capitalize()
+    return day_output

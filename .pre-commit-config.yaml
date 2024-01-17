@@ -46,6 +46,6 @@ repos:
           require_serial: true
       -   id: pytest
           name: pytest
-          entry: pytest
+          entry: coverage run -m pytest
           language: system
           types: [python]

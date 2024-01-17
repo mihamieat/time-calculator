@@ -25,7 +25,7 @@ class TestHoursCalculation(unittest.TestCase):
     def test_correct_hours_hours_sum_extra_days_pm_midnight_result(self):
         """Test correct hours calculation."""
         hours_sum, days, am_pm = add_hours(6, 30, "PM")
-        self.assertEqual(hours_sum, 0)
+        self.assertEqual(hours_sum, 12)
         self.assertEqual(days, 2)
         self.assertEqual(am_pm, "AM")
 

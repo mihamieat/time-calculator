@@ -18,6 +18,9 @@ def add_hours(clock_hours, duration_hours, ap_pm, extra_hour=0):
         hours_sum -= 12
         ap_pm_result = "PM"
 
+    if hours_sum == 0:
+        hours_sum = 12
+
     return hours_sum, days, ap_pm_result
 
 

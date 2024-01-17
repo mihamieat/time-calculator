@@ -22,6 +22,6 @@ class TestFormatter(unittest.TestCase):
 
     def test_correct_formatter_output_more_extra_days(self):
         """Test correct formatter output."""
-        output = format_result(12, 30, "PM", 2)
-        expected = "12:30 PM (2 days later)"
+        output = format_result(12, 30, "PM", 2, "Monday")
+        expected = "12:30 PM, Monday (2 days later)"
         self.assertEqual(output, expected)

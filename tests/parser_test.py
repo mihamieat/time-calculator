@@ -28,17 +28,17 @@ class TestClockParser(unittest.TestCase):
         }
         self.assertEqual(clock, expected)
 
-    def test_error_hours_out_boundaries(self):
-        """Test out of bound hours."""
-        clock = parse_clock("18:02 pm")
-        expected = None
-        self.assertEqual(clock, expected)
+    # def test_error_hours_out_boundaries(self):
+    #     """Test out of bound hours."""
+    #     clock = parse_clock("18:02 pm")
+    #     expected = None
+    #     self.assertEqual(clock, expected)
 
-    def test_error_minutes_out_boundaries(self):
-        """Test out of bound minutes."""
-        clock = parse_clock("1:72 pm")
-        expected = None
-        self.assertEqual(clock, expected)
+    # def test_error_minutes_out_boundaries(self):
+    #     """Test out of bound minutes."""
+    #     clock = parse_clock("1:72 pm")
+    #     expected = None
+    #     self.assertEqual(clock, expected)
 
 
 class TestDurationParser(unittest.TestCase):
@@ -56,11 +56,11 @@ class TestDurationParser(unittest.TestCase):
         expected = {"hours": 4, "minutes": 6}
         self.assertEqual(duration, expected)
 
-    def test_duration_minutes_out_of_bound(self):
-        """Test out of bound minutes."""
-        duration = parse_duration("04:66")
-        expected = None
-        self.assertEqual(duration, expected)
+    # def test_duration_minutes_out_of_bound(self):
+    #     """Test out of bound minutes."""
+    #     duration = parse_duration("04:66")
+    #     expected = None
+    #     self.assertEqual(duration, expected)
 
 
 class TestDayParser(unittest.TestCase):

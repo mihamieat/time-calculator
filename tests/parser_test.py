@@ -2,7 +2,7 @@
 """Test parser package."""
 
 import unittest
-from src.time_calculator.parser import parse_clock
+from src.time_calculator.parser import parse_clock, parse_duration, parse_day
 
 
 class TestClockParser(unittest.TestCase):
@@ -30,12 +30,50 @@ class TestClockParser(unittest.TestCase):
 
     def test_error_hours_out_boundaries(self):
         """Test out of bound hours."""
-        clock = parse_clock("18:02 pm")
-        expected = None
-        self.assertEqual(clock, expected)
+        with self.assertRaises(SystemExit) as cm:
+            parse_clock("18:02 pm")
+        self.assertEqual(cm.exception.code, 1)
 
     def test_error_minutes_out_boundaries(self):
         """Test out of bound minutes."""
-        clock = parse_clock("1:72 pm")
+        with self.assertRaises(SystemExit) as cm:
+            parse_clock("1:72 pm")
+        self.assertEqual(cm.exception.code, 1)
+
+
+class TestDurationParser(unittest.TestCase):
+    """Test duration parser."""
+
+    def test_correct_duration(self):
+        """Test correct duration."""
+        duration = parse_duration("180:56")
+        expected = {"hours": 180, "minutes": 56}
+        self.assertEqual(duration, expected)
+
+    def test_correct_duration_zeros(self):
+        """Test correct duration."""
+        duration = parse_duration("04:06")
+        expected = {"hours": 4, "minutes": 6}
+        self.assertEqual(duration, expected)
+
+    def test_duration_minutes_out_of_bound(self):
+        """Test out of bound minutes."""
+        with self.assertRaises(SystemExit) as cm:
+            parse_duration("04:66")
+        self.assertEqual(cm.exception.code, 1)
+
+
+class TestDayParser(unittest.TestCase):
+    """Test days parser."""
+
+    def test_correct_day(self):
+        """Test correct day."""
+        day = parse_day("MoNdaY")
+        expected = "monday"
+        self.assertEqual(day, expected)
+
+    def test_false_day(self):
+        """Test false day."""
+        day = parse_day("moonday")
         expected = None
-        self.assertEqual(clock, expected)
+        self.assertEqual(day, expected)

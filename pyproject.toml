@@ -7,6 +7,9 @@ license = "MIT"
 readme = "README.md"
 packages = [{include = "time_calculator", from = "src"}]
 
+[tool.poetry.scripts]
+time-calculator = "src.time_calculator.main:time_calculator"
+
 [tool.poetry.dependencies]
 python = "^3.10"
 pre-commit = "^3.6.0"
@@ -14,6 +17,8 @@ black = "^23.12.1"
 pycln = "^2.4.0"
 isort = "^5.13.2"
 pylint = "^3.0.3"
+pytest-cov = "^4.1.0"
+click = "^8.1.7"
 
 [tool.poetry.group.dev.dependencies]
 pytest = "^7.4.4"

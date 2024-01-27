@@ -45,5 +45,4 @@ def add_days(dayofweek, extra_days):
         "saturday",
     ]
     index = days.index(dayofweek.lower())
-    day_output = days[(index + extra_days) % len(days)].capitalize()
-    return day_output
+    return days[(index + extra_days) % len(days)].capitalize()
